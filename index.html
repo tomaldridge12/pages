@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Image Gallery</title>
+    <style>
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <?php
+            $dir = 'imgs/';
+            $files = scandir($dir);
+            foreach($files as $file) {
+                if (in_array($file, array(".", ".."))) continue;
+                echo "<img src='$dir$file' alt=''>";
+            }
+        ?>
+    </div>
+</body>
+</html>
